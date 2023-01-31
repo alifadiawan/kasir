@@ -16,6 +16,12 @@ class itemsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //
@@ -98,10 +104,12 @@ class itemsController extends Controller
     public function update(Request $request, $id)
     {
         $message = [
-            'required' => 'Dropdown diisi gaess',
+            'required' => ':attribute diisi gaess',
         ];
         $validateData = $request->validate([
-            'category_id' => 'required',
+            'edit_produk' => 'required',
+            'edit_price' => 'required',
+            'edit_stock' => 'required',
         ], $message);
 
         $produk = item::find($id);

@@ -17,6 +17,12 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
+
     public function index()
     {
         $items = item::doesnthave('cart')->where('stock', '>' , 0)->get();

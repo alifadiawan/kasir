@@ -37,6 +37,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Category</th>
                                     <th>Nama Produk</th>
                                     <th>Harga</th>
                                     <th>Stock</th>
@@ -47,6 +48,7 @@
                                 @foreach ($daftar_produk as $item)
                                     <tr>
                                         <td>{{$loop -> iteration}}</td>
+                                        <td>{{ $item->category->name }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{number_format($item->price) }}</td>
                                         <td>{{$item->stock}}</td>

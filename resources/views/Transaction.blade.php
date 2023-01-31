@@ -74,36 +74,36 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $cart->name }}</td>
-                                            <td>{{ number_format($cart->price) }}</td>
-                                            <th>
-                                                <input type="number" max="{{ $cart->stock - $cart->qty }}" min="1"
-                                                    onchange="ubah({{ $loop->iteration }})" value="1"
-                                                    class="form-control">
-                                            </th>
-                                            <th>
+                                            <td>
                                                 <form action="{{ route('Transaction.update', $cart->cart->id) }}"
-                                                    method="post">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <input type="submit" id="update{{ $loop->iteration }}" class="btn btn-primary"
-                                                        style="display: none" value="Update">
-                                                </form>
-                                                <form action="{{ route('Transaction.destroy', $cart->cart->id) }}"
                                                     method="POST">
                                                     @csrf
-                                                    @method('DELETE')
-                                                    <input type="submit" id="hapus{{ $loop->iteration }}" class="btn btn-outline-danger"
-                                                        style="display:" value="delete">
+                                                    @method('PUT')
+                                                    <input type="number" class="form-control" min="1"
+                                                        max="{{ $cart->stock + $cart->cart->qty }}" name="qty"
+                                                        onchange="update{{ $loop->iteration }}()"
+                                                        value="{{ $cart->cart->qty }}">
+                                            </td>
+                                            <td>{{ $cart->price * $cart->cart->qty }}</td>
+                                            <td>
+                                                <input type="submit" class="btn btn-sm btn-primary"
+                                                    id="ubah{{ $loop->iteration }}" style="display: none" value="Update">
                                                 </form>
-                                            </th>
+                                                <form action="{{ route('Transaction.destroy', $cart->cart->id) }}"
+                                                    method="POST" class="action">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <input type="submit" class="btn btn-sm btn-danger"
+                                                        id="hapus{{ $loop->iteration }}" style="display: " value="Hapus">
+                                                </form>
+                                                <script>
+                                                    function update{{ $loop->iteration }}() {
+                                                        document.getElementById("ubah{{ $loop->iteration }}").style.display = "inline";
+                                                        document.getElementById("hapus{{ $loop->iteration }}").style.display = "none";
+                                                    }
+                                                </script>
+                                            </td>
                                         </tr>
-
-                                        <script>
-                                            function ubah{{ $loop->iteration }}() {
-                                                document.getElementById("update{{ $loop->iteration }}").style.display = "inline";
-                                                document.getElementById("hapus{{ $loop->iteration }}").style.display = "none";
-                                            }
-                                        </script>
                                     @endforeach
                                 @endif
                             </tbody>
