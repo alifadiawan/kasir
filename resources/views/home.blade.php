@@ -26,6 +26,7 @@
                         @if ($message = Session::get('edit'))
                             <div class="alert alert-success" role="alert">
                                 <h4>{{$message}} Berhasil di update</h4>
+                                h
                             </div>
                         @endif
                         @if ($message = Session::get('hapus'))

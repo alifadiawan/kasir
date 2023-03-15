@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            div.
+           
             <div class="col">
                 <div class="card">
                     <div class="card-header">
@@ -64,7 +64,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody> 
                                 @if ($carts->isEmpty())
                                     <tr>
                                         <td class="text-center" colspan="5">Keranjang Kosong</td>
@@ -120,8 +120,7 @@
                                 <tbody>
                                     <td colspan="2">Payment</td>
                                     <td colspan="3">
-                                        <input type="text" class="form-control"
-                                            min="="{{ $carts->sum(function ($item) {return $item->price * $item->cart->qty;}) }}"
+                                        <input type="text" class="form-control" min="="{{ $carts->sum(function ($item) {return $item->price * $item->cart->qty;}) }}"
                                             name="pay_total" required>
                                     </td>
                                 </tbody>

@@ -9,11 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class item extends Model
 {
     use HasFactory;
-    // protected $fillable = [
-    //     'name',
-    //     'price',
-    //     'stock'
-    // ];
     protected $table = 'items';
 
     protected $guarded = [];

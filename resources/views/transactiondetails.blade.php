@@ -24,7 +24,7 @@
 
                         <table class="table table-responsive table-striped">
                             <thead>
-                                <th>#</th>
+                                <th>No</th>
                                 <th>Item name</th>
                                 <th>qty</th>
                                 <th>price</th>
@@ -36,6 +36,7 @@
                                     <td>{{$item->item->name}}</td>
                                     <td>{{$item->qty}}</td>
                                     <td>{{$item->item->price}}</td>
+                                    <td>{{$item->qty*$item->item->price}}</td>
                                 </tr>
                             @endforeach
                             <tr>

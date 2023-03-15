@@ -26,7 +26,7 @@ class TransactionController extends Controller
     public function index()
     {
         $items = item::doesnthave('cart')->where('stock', '>' , 0)->get();
-        $carts = item::has('cart')->get()->sortByDesc('cart.created_at');
+        $carts = item::has('cart')->get()->sortByDesc('cart.created_at'); 
         return view('Transaction' , compact('carts', 'items'));
 
     }
@@ -117,7 +117,7 @@ class TransactionController extends Controller
         $item = cart::findorfail($id);
         $item->update($request->all());
 
-        return redirect()->back()->with('status', 'quantity has been updated');
+        return redirect()->back()->with('s  tatus', 'quantity has been updated');
     }
 
     /**
